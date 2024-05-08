@@ -34,6 +34,44 @@ package org.uzum.java_algorithms;
  */
 public class Homework6_2 {
     public int longestMonotonicSubarray(int[] nums) {
-        return -1;
+
+        if (nums.length < 2) {
+            return nums.length;
+        }
+
+        int countLength = 1;
+
+        int increase = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                countLength++;
+            } else {
+                if (increase < countLength) {
+                    increase = countLength;
+                }
+                countLength = 1;
+            }
+        }
+        if (countLength > increase) {
+            increase = countLength;
+        }
+
+        countLength = 1;
+        int decrease = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < nums[i - 1]) {
+                countLength++;
+            } else {
+                if (decrease < countLength) {
+                    decrease = countLength;
+                }
+                countLength = 1;
+            }
+        }
+        if (countLength > decrease) {
+            decrease = countLength;
+        }
+
+        return Math.max(increase, decrease);
     }
 }
