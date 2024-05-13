@@ -8,6 +8,8 @@ public class Homework2Template {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
+        System.out.println("Input folder:");
+
         String inputDirectory = in.nextLine();
 
         System.out.println(String.format("Directory %s:", inputDirectory));
